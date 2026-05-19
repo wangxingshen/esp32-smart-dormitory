@@ -11,6 +11,7 @@ public:
 
 private:
     uint8_t pin;
+    int lastValid;
 };
 
 #endif

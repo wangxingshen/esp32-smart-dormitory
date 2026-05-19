@@ -1,5 +1,8 @@
 #include "display/oled_display.h"
 
+
+int count = 0;
+
 OLEDDisplay::OLEDDisplay(uint8_t addr, uint8_t sda, uint8_t scl)
     : oled(128, 64, &Wire, -1), addr(addr) {}
 
@@ -28,6 +31,9 @@ void OLEDDisplay::showSensorData(float temp, float humidity, float light, int sm
     oled.printf("Light: %.0f lx", light);
     oled.setCursor(0, 48);
     oled.printf("Smoke: %d", smoke);
+    oled.setCursor(0, 56);
+    oled.printf("count: %d", count);
+    count++;
     oled.display();
 }
 

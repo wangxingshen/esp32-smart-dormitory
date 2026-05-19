@@ -26,7 +26,7 @@
 #define OLED_ADDR      0x3C
 
 // ========== 采集间隔 (毫秒) ==========
-#define SENSOR_READ_INTERVAL   2000    // 传感器读取间隔
+#define SENSOR_READ_INTERVAL   3000    // 传感器读取间隔
 #define DATA_UPLOAD_INTERVAL   5000    // 数据上传间隔
 #define COMMAND_POLL_INTERVAL  2000    // 命令轮询间隔
 

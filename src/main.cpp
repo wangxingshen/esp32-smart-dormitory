@@ -18,6 +18,7 @@ BH1750Sensor bh(I2C_SDA, I2C_SCL);
 MQ2Sensor    mq2(PIN_MQ2);
 
 OLEDDisplay oled(OLED_ADDR, I2C_SDA, I2C_SCL);
+extern int count;  // 定义在 oled_display.cpp
 
 // LED     led1(PIN_LED_1);           // 未接
 // LED     led2(PIN_LED_2);           // 未接
@@ -105,6 +106,8 @@ void printSensorData() {
     Serial.printf("  Hum:   %.1f %%\n", humidity);
     Serial.printf("  Light: %.0f lx\n", light);
     Serial.printf("  Smoke: %d\n", smoke);
+    Serial.printf("  count: %d\n", count);
+    count++;
 }
 
 // ========== 更新 OLED ==========

@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "author": "ESP32 Smart Dormitory",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi/esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi/dht22",
+      "id": "dht1",
+      "top": -120,
+      "left": -80,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi/ssd1306",
+      "id": "oled1",
+      "top": -160,
+      "left": 200,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi/potentiometer",
+      "id": "pot1",
+      "top": 120,
+      "left": -60,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi/led",
+      "id": "led1",
+      "top": -200,
+      "left": 280,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi/led",
+      "id": "led2",
+      "top": -200,
+      "left": 340,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi/buzzer",
+      "id": "buzzer1",
+      "top": -200,
+      "left": 400,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi/relay-module",
+      "id": "relay1",
+      "top": -80,
+      "left": 420,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi/resistor",
+      "id": "r1",
+      "top": -170,
+      "left": 260,
+      "attrs": { "resistance": "220" }
+    },
+    {
+      "type": "wokwi/resistor",
+      "id": "r2",
+      "top": -170,
+      "left": 320,
+      "attrs": { "resistance": "220" }
+    }
+  ],
+  "connections": [
+    ["esp:3V3", "dht1:VCC", "red", []],
+    ["esp:GND.1", "dht1:GND", "black", []],
+    ["esp:D4", "dht1:DAT", "green", []],
+
+    ["esp:3V3", "oled1:VCC", "red", []],
+    ["esp:GND.1", "oled1:GND", "black", []],
+    ["esp:D21", "oled1:SDA", "blue", []],
+    ["esp:D22", "oled1:SCL", "yellow", []],
+
+    ["esp:3V3", "pot1:VCC", "red", []],
+    ["esp:GND.1", "pot1:GND", "black", []],
+    ["esp:D34", "pot1:SIG", "green", []],
+
+    ["esp:D2", "r1:1", "green", []],
+    ["r1:2", "led1:A", "", []],
+    ["led1:C", "esp:GND.1", "black", []],
+
+    ["esp:D19", "r2:1", "green", []],
+    ["r2:2", "led2:A", "", []],
+    ["led2:C", "esp:GND.1", "black", []],
+
+    ["esp:3V3", "buzzer1:VCC", "red", []],
+    ["esp:GND.1", "buzzer1:GND", "black", []],
+    ["esp:D5", "buzzer1:SIG", "green", []],
+
+    ["esp:5V", "relay1:VCC", "red", []],
+    ["esp:GND.1", "relay1:GND", "black", []],
+    ["esp:D18", "relay1:IN", "green", []]
+  ]
+}

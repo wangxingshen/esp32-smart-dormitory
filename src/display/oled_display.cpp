@@ -1,5 +1,6 @@
 #include "display/oled_display.h"
 
+#include <cstring>
 
 int count = 0;
 
@@ -7,7 +8,7 @@ OLEDDisplay::OLEDDisplay(uint8_t addr, uint8_t sda, uint8_t scl)
     : oled(128, 64, &Wire, -1), addr(addr) {}
 
 bool OLEDDisplay::begin() {
-    // Wire 由 BH1750 先初始化，这里不再重复 begin()
+    // Wire is initialized by BH1750Sensor; SSD1306 reuses the same I2C bus.
     if (!oled.begin(SSD1306_SWITCHCAPVCC, addr)) {
         return false;
     }

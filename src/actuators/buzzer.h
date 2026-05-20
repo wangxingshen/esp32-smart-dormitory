@@ -9,8 +9,8 @@ public:
     void begin();
     void on();
     void off();
-    void beep(unsigned int durationMs);  // 非阻塞
-    void check();  // 检查是否需要关闭
+    void beep(unsigned int durationMs);
+    void check();
 
 private:
     uint8_t pin;

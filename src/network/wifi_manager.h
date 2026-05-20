@@ -1,6 +1,7 @@
 #ifndef WIFI_MANAGER_H
 #define WIFI_MANAGER_H
 
+#include <Arduino.h>
 #include <WiFi.h>
 
 class WiFiManager {
@@ -8,7 +9,7 @@ public:
     WiFiManager(const char *ssid, const char *password);
     bool connect(unsigned long timeoutMs = 15000);
     bool isConnected();
-    void checkConnection();  // 断线自动重连
+    void checkConnection();
     String getIP();
 
 private:

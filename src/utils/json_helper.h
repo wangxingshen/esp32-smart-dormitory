@@ -5,7 +5,7 @@
 
 struct ControlCommand {
     bool valid;
-    String deviceId;
+    long commandId;
     String commandType;
     String commandValue;
 };
@@ -18,8 +18,8 @@ public:
                                   float light,
                                   int smoke);
 
-    static String buildCommandAck(const char *deviceId,
-                                  const char *commandType,
+    static String buildCommandAck(long commandId,
+                                  const char *deviceId,
                                   const char *status);
 
     static ControlCommand parseCommand(const String &json);

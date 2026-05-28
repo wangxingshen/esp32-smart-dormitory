@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 
-MQ2Sensor::MQ2Sensor(uint8_t pin) : pin(pin), lastValid(0) {}
+MQ2Sensor::MQ2Sensor(uint8_t pin) : pin(pin) {}
 
 bool MQ2Sensor::begin() {
     pinMode(pin, INPUT);
@@ -11,15 +11,6 @@ bool MQ2Sensor::begin() {
 }
 
 bool MQ2Sensor::read(int &rawValue) {
-    int raw = analogRead(pin);
-
-    if (raw <= 5 || raw >= 4090) {
-        rawValue = lastValid;
-        return true;
-    }
-
-    // Smooth noisy analog values with a simple moving average.
-    lastValid = (lastValid * 3 + raw) / 4;
-    rawValue = lastValid;
+    rawValue = analogRead(pin);
     return true;
 }

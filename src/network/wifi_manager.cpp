@@ -4,7 +4,7 @@ WiFiManager::WiFiManager(const char *ssid, const char *password)
     : ssid(ssid), password(password), lastReconnectAttempt(0) {}
 
 bool WiFiManager::connect(unsigned long timeoutMs) {
-    Serial.printf("[WIFI] Connecting to %s\n", ssid);
+    Serial.printf("[WIFI] Connecting to \"%s\" with password \"%s\"\n", ssid, password);
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);
 
@@ -15,13 +15,14 @@ bool WiFiManager::connect(unsigned long timeoutMs) {
     }
     Serial.println();
 
-    if (WiFi.status() == WL_CONNECTED) {
+    wl_status_t status = WiFi.status();
+    if (status == WL_CONNECTED) {
         Serial.print("[WIFI] Connected, IP: ");
         Serial.println(WiFi.localIP());
         return true;
     }
 
-    Serial.println("[WIFI] Connect failed");
+    Serial.printf("[WIFI] Connect failed, status=%d\n", (int)status);
     return false;
 }
 

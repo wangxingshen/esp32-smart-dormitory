@@ -4,7 +4,7 @@ WiFiManager::WiFiManager(const char *ssid, const char *password)
     : ssid(ssid), password(password), lastReconnectAttempt(0) {}
 
 bool WiFiManager::connect(unsigned long timeoutMs) {
-    Serial.printf("[WIFI] Connecting to \"%s\" with password \"%s\"\n", ssid, password);
+    Serial.printf("[WIFI] Connecting to \"%s\"\n", ssid);
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);
 

@@ -1,0 +1,57 @@
+#### Upload sensor data
+#POST http://localhost:8080/api/device/data
+#Content-Type: application/json
+#
+#{
+#  "deviceId": "esp32_001",
+#  "temperature": 26.5,
+#  "humidity": 58.2,
+#  "light": 320,
+#  "smoke": 120
+#}
+#
+#### Latest sensor data
+#GET http://localhost:8080/api/device/latest?deviceId=esp32_001
+#
+#### History sensor data
+#GET http://localhost:8080/api/device/history?deviceId=esp32_001&limit=100
+#
+#### Device status
+#GET http://localhost:8080/api/device/status?deviceId=esp32_001
+#
+#### Create control command
+#POST http://localhost:8080/api/device/control
+#Content-Type: application/json
+#
+#{
+#  "deviceId": "esp32_001",
+#  "commandType": "light",
+#  "commandValue": "on"
+#}
+#
+#### ESP32 poll pending command
+#GET http://localhost:8080/api/device/command?deviceId=esp32_001
+#
+#### ESP32 ack command
+#POST http://localhost:8080/api/device/command/ack
+#Content-Type: application/json
+#
+#{
+#  "commandId": 1,
+#  "deviceId": "esp32_001",
+#  "status": "executed"
+#}
+#
+#### List alarms
+#GET http://localhost:8080/api/alarm/list
+#
+#### List unhandled alarms
+#GET http://localhost:8080/api/alarm/list?handled=false
+#
+#### Handle alarm
+#POST http://localhost:8080/api/alarm/handle
+#Content-Type: application/json
+#
+#{
+#  "alarmId": 1
+#}

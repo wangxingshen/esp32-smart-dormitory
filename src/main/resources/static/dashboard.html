@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能宿舍环境监测</title>
+    <link rel="stylesheet" href="/dashboard.css">
+</head>
+<body>
+<main class="shell">
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">ESP32 智能宿舍</p>
+            <h1>环境监测与远程控制</h1>
+        </div>
+        <div class="status-panel">
+            <span id="deviceStatusDot" class="status-dot"></span>
+            <div>
+                <strong id="deviceStatusText">检查中</strong>
+                <span id="deviceLastSeen">--</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="toolbar">
+        <label for="deviceIdInput">设备 ID</label>
+        <input id="deviceIdInput" value="esp32_001" autocomplete="off">
+        <button id="refreshButton" type="button">立即刷新</button>
+        <label class="switch">
+            <input id="autoRefreshToggle" type="checkbox" checked>
+            <span>自动刷新</span>
+        </label>
+    </section>
+
+    <section class="time-grid">
+        <div>
+            <span>数据采集时间</span>
+            <strong id="dataTime">--</strong>
+        </div>
+        <div>
+            <span>页面刷新时间</span>
+            <strong id="refreshTime">--</strong>
+        </div>
+        <div>
+            <span>接口状态</span>
+            <strong id="apiState">等待刷新</strong>
+        </div>
+    </section>
+
+    <section class="metric-grid">
+        <article class="metric metric-temp">
+            <span>温度</span>
+            <strong><b id="temperature">--</b> °C</strong>
+        </article>
+        <article class="metric metric-humidity">
+            <span>湿度</span>
+            <strong><b id="humidity">--</b> %</strong>
+        </article>
+        <article class="metric metric-light">
+            <span>光照</span>
+            <strong><b id="light">--</b> lx</strong>
+        </article>
+        <article class="metric metric-smoke">
+            <span>烟雾</span>
+            <strong><b id="smoke">--</b></strong>
+        </article>
+    </section>
+
+    <section class="content-grid">
+        <article class="panel chart-panel">
+            <div class="panel-head">
+                <div>
+                    <p class="eyebrow">History</p>
+                    <h2>历史曲线</h2>
+                </div>
+                <select id="chartField">
+                    <option value="temperature">温度</option>
+                    <option value="humidity">湿度</option>
+                    <option value="light">光照</option>
+                    <option value="smoke">烟雾</option>
+                </select>
+            </div>
+            <canvas id="historyChart" width="900" height="320"></canvas>
+        </article>
+
+        <article class="panel">
+            <div class="panel-head">
+                <div>
+                    <p class="eyebrow">Control</p>
+                    <h2>远程控制</h2>
+                </div>
+                <span id="controlState">就绪</span>
+            </div>
+            <div class="control-grid">
+                <button data-command-type="light" data-command-value="on">开灯</button>
+                <button data-command-type="light" data-command-value="off">关灯</button>
+                <button data-command-type="fan" data-command-value="on">开风扇</button>
+                <button data-command-type="fan" data-command-value="off">关风扇</button>
+                <button data-command-type="buzzer" data-command-value="beep">蜂鸣一次</button>
+                <button data-command-type="relay" data-command-value="off">关闭继电器</button>
+            </div>
+        </article>
+
+        <article class="panel alarm-panel">
+            <div class="panel-head">
+                <div>
+                    <p class="eyebrow">Alarm</p>
+                    <h2>报警记录</h2>
+                </div>
+                <button id="onlyUnhandledButton" type="button">未处理</button>
+            </div>
+            <div id="alarmList" class="alarm-list"></div>
+        </article>
+    </section>
+</main>
+
+<script src="/dashboard.js"></script>
+</body>
+</html>

@@ -1,12 +1,12 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-// Wi-Fi. Replace these two values with your real router hotspot name and password.
-#define WIFI_SSID       "REDMI K80"
+// Wi-Fi. Replace these values with the Wi-Fi used by the ESP32 and backend PC.
+#define WIFI_SSID       "REDMI K70"
 #define WIFI_PASSWORD   "998244353"
 
 // Spring Boot backend. Use the computer LAN IP, not localhost.
-#define SERVER_HOST     "10.2.29.194"
+#define SERVER_HOST     "192.168.72.119"
 #define SERVER_PORT     8080
 
 // Device id must match the deviceId used by the Java backend.
@@ -28,9 +28,9 @@
 #define OLED_ADDR       0x3C
 
 // Time intervals in milliseconds.
-#define SENSOR_READ_INTERVAL    2000   // 串口打印 + 传感器读数间隔（毫秒）
-#define DATA_UPLOAD_INTERVAL    5000   // 数据上传到后端间隔
-#define COMMAND_POLL_INTERVAL   2000   // 轮询后端命令间隔
+#define SENSOR_READ_INTERVAL    2000
+#define DATA_UPLOAD_INTERVAL    5000
+#define COMMAND_POLL_INTERVAL   2000
 
 // Local warning thresholds. The Java backend also has its own alarm rules.
 #define TEMP_HIGH_THRESHOLD       35.0f

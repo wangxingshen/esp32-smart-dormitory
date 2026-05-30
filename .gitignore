@@ -9,3 +9,4 @@ embedded/**/.pio/
 embedded/**/.platformio-core/
 embedded/**/.platformio-py/
 .claude/
+esp32-smart-dormitory.code-workspace
